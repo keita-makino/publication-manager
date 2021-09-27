@@ -1,0 +1,72 @@
+datasource db {
+  provider          = "mysql"
+  url               = env("DATABASE_URL_2")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  planetScaleMode   = true
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["planetScaleMode"]
+}
+
+model User {
+  id    String @id @default(uuid())
+  name  String
+  email String @unique
+}
+
+model Tag {
+  id       String    @id
+  name     String
+  articles Article[]
+  groups   Group[]
+}
+
+model Project {
+  id       String    @id
+  name     String
+  articles Article[]
+}
+
+model Article {
+  id        String   @id
+  name      String
+  authors   Author[]
+  abstract  String?  @db.Text
+  date      DateTime
+  tags      Tag[]
+  citation  Int
+  status    String
+  journal   Journal? @relation(fields: [journalId], references: [id])
+  journalId String?
+  sources   Source[]
+  Project   Project? @relation(fields: [projectId], references: [id])
+  projectId String?
+}
+
+model Journal {
+  id       String    @id
+  name     String
+  articles Article[]
+}
+
+model Author {
+  id       String    @id
+  name     String
+  articles Article[]
+  groups   Group[]
+}
+
+model Group {
+  id      String   @id
+  name    String
+  authors Author[]
+  tags    Tag[]
+}
+
+model Source {
+  id       String    @id
+  type     String
+  articles Article[]
+}

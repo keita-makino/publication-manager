@@ -1,0 +1,8 @@
+node_modules
+dist/index.html
+public/index.dev.html
+configuration
+webpack.dev.js
+
+.env
+dist
