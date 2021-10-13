@@ -180,6 +180,24 @@ export interface NexusGenInputs {
     projectId?: NexusGenEnums['SortOrder'] | null; // SortOrder
     status?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
+  ArticleOrderByRelationAggregateInput: { // input type
+    _count?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  ArticleOrderByWithRelationInput: { // input type
+    Project?: NexusGenInputs['ProjectOrderByWithRelationInput'] | null; // ProjectOrderByWithRelationInput
+    abstract?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    authors?: NexusGenInputs['AuthorOrderByRelationAggregateInput'] | null; // AuthorOrderByRelationAggregateInput
+    citation?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    date?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    journal?: NexusGenInputs['JournalOrderByWithRelationInput'] | null; // JournalOrderByWithRelationInput
+    journalId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    name?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    projectId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    sources?: NexusGenInputs['SourceOrderByRelationAggregateInput'] | null; // SourceOrderByRelationAggregateInput
+    status?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    tags?: NexusGenInputs['TagOrderByRelationAggregateInput'] | null; // TagOrderByRelationAggregateInput
+  }
   ArticleScalarWhereInput: { // input type
     AND?: NexusGenInputs['ArticleScalarWhereInput'][] | null; // [ArticleScalarWhereInput!]
     NOT?: NexusGenInputs['ArticleScalarWhereInput'][] | null; // [ArticleScalarWhereInput!]
@@ -465,6 +483,15 @@ export interface NexusGenInputs {
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
     name?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
+  AuthorOrderByRelationAggregateInput: { // input type
+    _count?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  AuthorOrderByWithRelationInput: { // input type
+    articles?: NexusGenInputs['ArticleOrderByRelationAggregateInput'] | null; // ArticleOrderByRelationAggregateInput
+    groups?: NexusGenInputs['GroupOrderByRelationAggregateInput'] | null; // GroupOrderByRelationAggregateInput
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    name?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
   AuthorScalarWhereInput: { // input type
     AND?: NexusGenInputs['AuthorScalarWhereInput'][] | null; // [AuthorScalarWhereInput!]
     NOT?: NexusGenInputs['AuthorScalarWhereInput'][] | null; // [AuthorScalarWhereInput!]
@@ -610,6 +637,15 @@ export interface NexusGenInputs {
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
     name?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
+  GroupOrderByRelationAggregateInput: { // input type
+    _count?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  GroupOrderByWithRelationInput: { // input type
+    authors?: NexusGenInputs['AuthorOrderByRelationAggregateInput'] | null; // AuthorOrderByRelationAggregateInput
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    name?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    tags?: NexusGenInputs['TagOrderByRelationAggregateInput'] | null; // TagOrderByRelationAggregateInput
+  }
   GroupScalarWhereInput: { // input type
     AND?: NexusGenInputs['GroupScalarWhereInput'][] | null; // [GroupScalarWhereInput!]
     NOT?: NexusGenInputs['GroupScalarWhereInput'][] | null; // [GroupScalarWhereInput!]
@@ -738,6 +774,11 @@ export interface NexusGenInputs {
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
     name?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
+  JournalOrderByWithRelationInput: { // input type
+    articles?: NexusGenInputs['ArticleOrderByRelationAggregateInput'] | null; // ArticleOrderByRelationAggregateInput
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    name?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
   JournalUpdateInput: { // input type
     articles?: NexusGenInputs['ArticleUpdateManyWithoutJournalInput'] | null; // ArticleUpdateManyWithoutJournalInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
@@ -846,6 +887,11 @@ export interface NexusGenInputs {
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
     name?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
+  ProjectOrderByWithRelationInput: { // input type
+    articles?: NexusGenInputs['ArticleOrderByRelationAggregateInput'] | null; // ArticleOrderByRelationAggregateInput
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    name?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
   ProjectUpdateInput: { // input type
     articles?: NexusGenInputs['ArticleUpdateManyWithoutProjectInput'] | null; // ArticleUpdateManyWithoutProjectInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
@@ -907,6 +953,14 @@ export interface NexusGenInputs {
     some?: NexusGenInputs['SourceWhereInput'] | null; // SourceWhereInput
   }
   SourceOrderByInput: { // input type
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    type?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  SourceOrderByRelationAggregateInput: { // input type
+    _count?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  SourceOrderByWithRelationInput: { // input type
+    articles?: NexusGenInputs['ArticleOrderByRelationAggregateInput'] | null; // ArticleOrderByRelationAggregateInput
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
     type?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
@@ -1035,6 +1089,15 @@ export interface NexusGenInputs {
     some?: NexusGenInputs['TagWhereInput'] | null; // TagWhereInput
   }
   TagOrderByInput: { // input type
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    name?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  TagOrderByRelationAggregateInput: { // input type
+    _count?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  TagOrderByWithRelationInput: { // input type
+    articles?: NexusGenInputs['ArticleOrderByRelationAggregateInput'] | null; // ArticleOrderByRelationAggregateInput
+    groups?: NexusGenInputs['GroupOrderByRelationAggregateInput'] | null; // GroupOrderByRelationAggregateInput
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
     name?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
@@ -1674,7 +1737,7 @@ export interface NexusGenArgTypes {
     }
     articles: { // args
       cursor?: NexusGenInputs['ArticleWhereUniqueInput'] | null; // ArticleWhereUniqueInput
-      orderBy?: NexusGenInputs['ArticleOrderByInput'][] | null; // [ArticleOrderByInput!]
+      orderBy?: NexusGenInputs['ArticleOrderByWithRelationInput'][] | null; // [ArticleOrderByWithRelationInput!]
       skip?: number | null; // Int
       take?: number | null; // Int
       where?: NexusGenInputs['ArticleWhereInput'] | null; // ArticleWhereInput
@@ -1691,7 +1754,7 @@ export interface NexusGenArgTypes {
     }
     authors: { // args
       cursor?: NexusGenInputs['AuthorWhereUniqueInput'] | null; // AuthorWhereUniqueInput
-      orderBy?: NexusGenInputs['AuthorOrderByInput'][] | null; // [AuthorOrderByInput!]
+      orderBy?: NexusGenInputs['AuthorOrderByWithRelationInput'][] | null; // [AuthorOrderByWithRelationInput!]
       skip?: number | null; // Int
       take?: number | null; // Int
       where?: NexusGenInputs['AuthorWhereInput'] | null; // AuthorWhereInput
@@ -1708,7 +1771,7 @@ export interface NexusGenArgTypes {
     }
     groups: { // args
       cursor?: NexusGenInputs['GroupWhereUniqueInput'] | null; // GroupWhereUniqueInput
-      orderBy?: NexusGenInputs['GroupOrderByInput'][] | null; // [GroupOrderByInput!]
+      orderBy?: NexusGenInputs['GroupOrderByWithRelationInput'][] | null; // [GroupOrderByWithRelationInput!]
       skip?: number | null; // Int
       take?: number | null; // Int
       where?: NexusGenInputs['GroupWhereInput'] | null; // GroupWhereInput
@@ -1725,7 +1788,7 @@ export interface NexusGenArgTypes {
     }
     journals: { // args
       cursor?: NexusGenInputs['JournalWhereUniqueInput'] | null; // JournalWhereUniqueInput
-      orderBy?: NexusGenInputs['JournalOrderByInput'][] | null; // [JournalOrderByInput!]
+      orderBy?: NexusGenInputs['JournalOrderByWithRelationInput'][] | null; // [JournalOrderByWithRelationInput!]
       skip?: number | null; // Int
       take?: number | null; // Int
       where?: NexusGenInputs['JournalWhereInput'] | null; // JournalWhereInput
@@ -1754,7 +1817,7 @@ export interface NexusGenArgTypes {
     }
     projects: { // args
       cursor?: NexusGenInputs['ProjectWhereUniqueInput'] | null; // ProjectWhereUniqueInput
-      orderBy?: NexusGenInputs['ProjectOrderByInput'][] | null; // [ProjectOrderByInput!]
+      orderBy?: NexusGenInputs['ProjectOrderByWithRelationInput'][] | null; // [ProjectOrderByWithRelationInput!]
       skip?: number | null; // Int
       take?: number | null; // Int
       where?: NexusGenInputs['ProjectWhereInput'] | null; // ProjectWhereInput
@@ -1771,7 +1834,7 @@ export interface NexusGenArgTypes {
     }
     sources: { // args
       cursor?: NexusGenInputs['SourceWhereUniqueInput'] | null; // SourceWhereUniqueInput
-      orderBy?: NexusGenInputs['SourceOrderByInput'][] | null; // [SourceOrderByInput!]
+      orderBy?: NexusGenInputs['SourceOrderByWithRelationInput'][] | null; // [SourceOrderByWithRelationInput!]
       skip?: number | null; // Int
       take?: number | null; // Int
       where?: NexusGenInputs['SourceWhereInput'] | null; // SourceWhereInput
@@ -1788,7 +1851,7 @@ export interface NexusGenArgTypes {
     }
     tags: { // args
       cursor?: NexusGenInputs['TagWhereUniqueInput'] | null; // TagWhereUniqueInput
-      orderBy?: NexusGenInputs['TagOrderByInput'][] | null; // [TagOrderByInput!]
+      orderBy?: NexusGenInputs['TagOrderByWithRelationInput'][] | null; // [TagOrderByWithRelationInput!]
       skip?: number | null; // Int
       take?: number | null; // Int
       where?: NexusGenInputs['TagWhereInput'] | null; // TagWhereInput

@@ -203,6 +203,26 @@ input ArticleOrderByInput {
   status: SortOrder
 }
 
+input ArticleOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input ArticleOrderByWithRelationInput {
+  Project: ProjectOrderByWithRelationInput
+  abstract: SortOrder
+  authors: AuthorOrderByRelationAggregateInput
+  citation: SortOrder
+  date: SortOrder
+  id: SortOrder
+  journal: JournalOrderByWithRelationInput
+  journalId: SortOrder
+  name: SortOrder
+  projectId: SortOrder
+  sources: SourceOrderByRelationAggregateInput
+  status: SortOrder
+  tags: TagOrderByRelationAggregateInput
+}
+
 input ArticleScalarWhereInput {
   AND: [ArticleScalarWhereInput!]
   NOT: [ArticleScalarWhereInput!]
@@ -539,6 +559,17 @@ input AuthorOrderByInput {
   name: SortOrder
 }
 
+input AuthorOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input AuthorOrderByWithRelationInput {
+  articles: ArticleOrderByRelationAggregateInput
+  groups: GroupOrderByRelationAggregateInput
+  id: SortOrder
+  name: SortOrder
+}
+
 input AuthorScalarWhereInput {
   AND: [AuthorScalarWhereInput!]
   NOT: [AuthorScalarWhereInput!]
@@ -718,6 +749,17 @@ input GroupOrderByInput {
   name: SortOrder
 }
 
+input GroupOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input GroupOrderByWithRelationInput {
+  authors: AuthorOrderByRelationAggregateInput
+  id: SortOrder
+  name: SortOrder
+  tags: TagOrderByRelationAggregateInput
+}
+
 input GroupScalarWhereInput {
   AND: [GroupScalarWhereInput!]
   NOT: [GroupScalarWhereInput!]
@@ -870,6 +912,12 @@ input JournalCreateWithoutArticlesInput {
 }
 
 input JournalOrderByInput {
+  id: SortOrder
+  name: SortOrder
+}
+
+input JournalOrderByWithRelationInput {
+  articles: ArticleOrderByRelationAggregateInput
   id: SortOrder
   name: SortOrder
 }
@@ -1051,6 +1099,12 @@ input ProjectOrderByInput {
   name: SortOrder
 }
 
+input ProjectOrderByWithRelationInput {
+  articles: ArticleOrderByRelationAggregateInput
+  id: SortOrder
+  name: SortOrder
+}
+
 input ProjectUpdateInput {
   articles: ArticleUpdateManyWithoutProjectInput
   id: StringFieldUpdateOperationsInput
@@ -1097,26 +1151,26 @@ input ProjectWhereUniqueInput {
 
 type Query {
   article(where: ArticleWhereUniqueInput!): Article
-  articles(cursor: ArticleWhereUniqueInput, orderBy: [ArticleOrderByInput!], skip: Int, take: Int, where: ArticleWhereInput): [Article!]!
+  articles(cursor: ArticleWhereUniqueInput, orderBy: [ArticleOrderByWithRelationInput!], skip: Int, take: Int, where: ArticleWhereInput): [Article!]!
   articlesCount(cursor: ArticleWhereUniqueInput, orderBy: ArticleOrderByInput, skip: Int, take: Int, where: ArticleWhereInput): Int
   author(where: AuthorWhereUniqueInput!): Author
-  authors(cursor: AuthorWhereUniqueInput, orderBy: [AuthorOrderByInput!], skip: Int, take: Int, where: AuthorWhereInput): [Author!]!
+  authors(cursor: AuthorWhereUniqueInput, orderBy: [AuthorOrderByWithRelationInput!], skip: Int, take: Int, where: AuthorWhereInput): [Author!]!
   authorsCount(cursor: AuthorWhereUniqueInput, orderBy: AuthorOrderByInput, skip: Int, take: Int, where: AuthorWhereInput): Int
   group(where: GroupWhereUniqueInput!): Group
-  groups(cursor: GroupWhereUniqueInput, orderBy: [GroupOrderByInput!], skip: Int, take: Int, where: GroupWhereInput): [Group!]!
+  groups(cursor: GroupWhereUniqueInput, orderBy: [GroupOrderByWithRelationInput!], skip: Int, take: Int, where: GroupWhereInput): [Group!]!
   groupsCount(cursor: GroupWhereUniqueInput, orderBy: GroupOrderByInput, skip: Int, take: Int, where: GroupWhereInput): Int
   journal(where: JournalWhereUniqueInput!): Journal
-  journals(cursor: JournalWhereUniqueInput, orderBy: [JournalOrderByInput!], skip: Int, take: Int, where: JournalWhereInput): [Journal!]!
+  journals(cursor: JournalWhereUniqueInput, orderBy: [JournalOrderByWithRelationInput!], skip: Int, take: Int, where: JournalWhereInput): [Journal!]!
   journalsCount(cursor: JournalWhereUniqueInput, orderBy: JournalOrderByInput, skip: Int, take: Int, where: JournalWhereInput): Int
   multipleArticles(author: String, by: String, direction: String, journal: String, project: String, skip: Int, tag: String, take: Int, yearEnd: Int, yearStart: Int): [Article]
   project(where: ProjectWhereUniqueInput!): Project
-  projects(cursor: ProjectWhereUniqueInput, orderBy: [ProjectOrderByInput!], skip: Int, take: Int, where: ProjectWhereInput): [Project!]!
+  projects(cursor: ProjectWhereUniqueInput, orderBy: [ProjectOrderByWithRelationInput!], skip: Int, take: Int, where: ProjectWhereInput): [Project!]!
   projectsCount(cursor: ProjectWhereUniqueInput, orderBy: ProjectOrderByInput, skip: Int, take: Int, where: ProjectWhereInput): Int
   source(where: SourceWhereUniqueInput!): Source
-  sources(cursor: SourceWhereUniqueInput, orderBy: [SourceOrderByInput!], skip: Int, take: Int, where: SourceWhereInput): [Source!]!
+  sources(cursor: SourceWhereUniqueInput, orderBy: [SourceOrderByWithRelationInput!], skip: Int, take: Int, where: SourceWhereInput): [Source!]!
   sourcesCount(cursor: SourceWhereUniqueInput, orderBy: SourceOrderByInput, skip: Int, take: Int, where: SourceWhereInput): Int
   tag(where: TagWhereUniqueInput!): Tag
-  tags(cursor: TagWhereUniqueInput, orderBy: [TagOrderByInput!], skip: Int, take: Int, where: TagWhereInput): [Tag!]!
+  tags(cursor: TagWhereUniqueInput, orderBy: [TagOrderByWithRelationInput!], skip: Int, take: Int, where: TagWhereInput): [Tag!]!
   tagsCount(cursor: TagWhereUniqueInput, orderBy: TagOrderByInput, skip: Int, take: Int, where: TagWhereInput): Int
 }
 
@@ -1160,6 +1214,16 @@ input SourceListRelationFilter {
 }
 
 input SourceOrderByInput {
+  id: SortOrder
+  type: SortOrder
+}
+
+input SourceOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input SourceOrderByWithRelationInput {
+  articles: ArticleOrderByRelationAggregateInput
   id: SortOrder
   type: SortOrder
 }
@@ -1316,6 +1380,17 @@ input TagListRelationFilter {
 }
 
 input TagOrderByInput {
+  id: SortOrder
+  name: SortOrder
+}
+
+input TagOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input TagOrderByWithRelationInput {
+  articles: ArticleOrderByRelationAggregateInput
+  groups: GroupOrderByRelationAggregateInput
   id: SortOrder
   name: SortOrder
 }

@@ -10,6 +10,9 @@ import {
   nonNull,
   intArg,
   booleanArg,
+  enumType,
+  inputObjectType,
+  scalarType,
 } from "nexus";
 import path from "path";
 import { addCrudResolvers } from "@ra-data-prisma/backend";
@@ -216,6 +219,73 @@ const GetMultipleArticles = queryField("multipleArticles", {
   },
 });
 
+const ArticleOrderByInput = inputObjectType({
+  name: "ArticleOrderByInput",
+  definition(t) {
+    t.field("abstract", { type: SortOrder });
+    t.field("citation", { type: SortOrder });
+    t.field("date", { type: SortOrder });
+    t.field("id", { type: SortOrder });
+    t.field("journalId", { type: SortOrder });
+    t.field("name", { type: SortOrder });
+    t.field("projectId", { type: SortOrder });
+    t.field("status", { type: SortOrder });
+  },
+});
+
+const AuthorOrderByInput = inputObjectType({
+  name: "AuthorOrderByInput",
+  definition(t) {
+    t.field("id", { type: SortOrder });
+    t.field("name", { type: SortOrder });
+  },
+});
+
+const GroupOrderByInput = inputObjectType({
+  name: "GroupOrderByInput",
+  definition(t) {
+    t.field("id", { type: SortOrder });
+    t.field("name", { type: SortOrder });
+  },
+});
+
+const JournalOrderByInput = inputObjectType({
+  name: "JournalOrderByInput",
+  definition(t) {
+    t.field("id", { type: SortOrder });
+    t.field("name", { type: SortOrder });
+  },
+});
+
+const ProjectOrderByInput = inputObjectType({
+  name: "ProjectOrderByInput",
+  definition(t) {
+    t.field("id", { type: SortOrder });
+    t.field("name", { type: SortOrder });
+  },
+});
+
+const SourceOrderByInput = inputObjectType({
+  name: "SourceOrderByInput",
+  definition(t) {
+    t.field("id", { type: SortOrder });
+    t.field("type", { type: SortOrder });
+  },
+});
+
+const TagOrderByInput = inputObjectType({
+  name: "TagOrderByInput",
+  definition(t) {
+    t.field("id", { type: SortOrder });
+    t.field("name", { type: SortOrder });
+  },
+});
+
+const SortOrder = enumType({
+  name: "SortOrder",
+  members: ["asc", "desc"],
+});
+
 export const schema = applyMiddleware(
   makeSchema({
     types: [
@@ -230,6 +300,13 @@ export const schema = applyMiddleware(
       Auth,
       User,
       Mutation,
+      AuthorOrderByInput,
+      ArticleOrderByInput,
+      GroupOrderByInput,
+      JournalOrderByInput,
+      TagOrderByInput,
+      SourceOrderByInput,
+      ProjectOrderByInput,
       addCrudResolvers("Author"),
       addCrudResolvers("Article"),
       addCrudResolvers("Group"),

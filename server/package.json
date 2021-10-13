@@ -6,7 +6,7 @@
     "node": "14.x"
   },
   "dependencies": {
-    "@prisma/client": "^2.27.0",
+    "@prisma/client": "^3.2.1",
     "@ra-data-prisma/backend": "^7.0.0",
     "apollo-server-express": "^3.0.1",
     "cors": "^2.8.5",
