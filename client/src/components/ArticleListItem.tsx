@@ -10,8 +10,8 @@ import {
   IconButton,
   Collapse,
   Fade,
-} from '@material-ui/core';
-import { KeyboardArrowUp, KeyboardArrowDown } from '@material-ui/icons';
+} from '@mui/material';
+import { KeyboardArrowUp, KeyboardArrowDown } from '@mui/icons-material';
 import { startCase } from 'lodash';
 import React, { useState } from 'react';
 
@@ -116,7 +116,7 @@ export const ArticleListItem: React.FC<ArticleListItemProps> = (
                 <Typography
                   variant={'body2'}
                   color={'textSecondary'}
-                  align={'justify'}
+                  alignContent={'justifyContent'}
                 >
                   {'Abstract: '}
                   {props.abstract}

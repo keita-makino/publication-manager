@@ -1,5 +1,5 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import { Container } from '@material-ui/core';
+import { Container } from '@mui/material';
 import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 import {
@@ -7,6 +7,7 @@ import {
   filterVar,
   isResettingVar,
   loadingVar,
+  sortVar,
 } from '../localState';
 import { Index } from './Index';
 
@@ -17,6 +18,11 @@ export const App: React.FC<AppProps> = (props: AppProps) => {
     typePolicies: {
       Query: {
         fields: {
+          sort: {
+            read() {
+              return sortVar();
+            },
+          },
           filter: {
             read() {
               return filterVar();

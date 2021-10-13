@@ -9,6 +9,7 @@ import {
   stringArg,
   nonNull,
   intArg,
+  booleanArg,
 } from "nexus";
 import path from "path";
 import { addCrudResolvers } from "@ra-data-prisma/backend";
@@ -138,6 +139,8 @@ const GetMultipleArticles = queryField("multipleArticles", {
     yearEnd: intArg(),
     take: intArg(),
     skip: intArg(),
+    by: stringArg(),
+    direction: stringArg(),
   },
   async resolve(_, args, ctx) {
     return ctx.prisma.article.findMany({
@@ -197,7 +200,7 @@ const GetMultipleArticles = queryField("multipleArticles", {
           args.yearEnd
             ? {
                 date: {
-                  lte: new Date(args.yearEnd, 0),
+                  lte: new Date(args.yearEnd, 12, 31),
                 },
               }
             : {},
@@ -208,6 +211,7 @@ const GetMultipleArticles = queryField("multipleArticles", {
           },
         ],
       },
+      orderBy: [{ [args.by!]: args.direction }],
     });
   },
 });

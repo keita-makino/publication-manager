@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { usePermissions } from "react-admin";
 import { TokenContext } from "../App";
 import { createClient, gql } from "@urql/core";
-import { Card, CardContent } from "@material-ui/core";
+import { Card, CardContent } from "@mui/material";
 
 export type IndexProps = {};
 

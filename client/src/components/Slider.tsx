@@ -5,7 +5,7 @@ import {
   Typography,
   MenuItem,
   Slider as SliderMui,
-} from '@material-ui/core';
+} from '@mui/material';
 import gql from 'graphql-tag';
 import React, { useEffect, useState } from 'react';
 import { filterVar, isResettingVar, loadingVar } from '../localState';
@@ -59,7 +59,7 @@ export const Slider: React.FC<SliderProps> = (props: SliderProps) => {
       container
       item
       xs={12}
-      justify={'space-between'}
+      justifyContent={'space-between'}
       style={{ height: '5rem' }}
       alignItems={'flex-end'}
     >

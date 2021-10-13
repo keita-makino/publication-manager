@@ -7,8 +7,8 @@ import {
   Select,
   TextField,
   TextFieldProps,
-} from '@material-ui/core';
-import { Autocomplete } from '@material-ui/lab';
+  Autocomplete,
+} from '@mui/material';
 import gql from 'graphql-tag';
 import { capitalize, sortBy } from 'lodash';
 import React, { useEffect, useState } from 'react';
@@ -91,7 +91,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   const { data: isResetting } = useQuery(GET_RESETTING);
   const defaultValue = {
     id: undefined,
-    name: undefined,
+    name: '',
   };
   const [value, setValue] = useState<{
     id: string | undefined;
@@ -135,14 +135,12 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     loadingVar({ ...loadingVar(), articleList: true });
   };
 
-  console.log(query.get(props.type));
-
   return data ? (
     <Grid
       container
       item
       xs={12}
-      justify={'space-between'}
+      justifyContent={'space-between'}
       style={{ height: '4rem', width: '100%' }}
       alignItems={'center'}
     >

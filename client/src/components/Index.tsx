@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider, Grid, Typography } from '@material-ui/core';
+import { Divider, Grid, Typography } from '@mui/material';
 import { Dropdown } from './Dropdown';
 import { ArticleList } from './ArticleList';
 import { FilterBoard } from './FilterBoard';

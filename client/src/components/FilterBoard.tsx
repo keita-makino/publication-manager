@@ -1,4 +1,4 @@
-import { Card, Grid, Typography, Divider } from '@material-ui/core';
+import { Card, Grid, Typography, Divider } from '@mui/material';
 import React from 'react';
 import { Dropdown, DropdownProps } from './Dropdown';
 import { Reset } from './Reset';
@@ -38,7 +38,7 @@ export const FilterBoard: React.FC<FilterBoardProps> = (
           container
           item
           xs={12}
-          justify={'flex-end'}
+          justifyContent={'flex-end'}
           style={{ marginTop: '1rem', height: '2.5rem' }}
         >
           <Reset />

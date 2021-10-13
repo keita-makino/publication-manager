@@ -1108,7 +1108,7 @@ type Query {
   journal(where: JournalWhereUniqueInput!): Journal
   journals(cursor: JournalWhereUniqueInput, orderBy: [JournalOrderByInput!], skip: Int, take: Int, where: JournalWhereInput): [Journal!]!
   journalsCount(cursor: JournalWhereUniqueInput, orderBy: JournalOrderByInput, skip: Int, take: Int, where: JournalWhereInput): Int
-  multipleArticles(author: String, journal: String, project: String, skip: Int, tag: String, take: Int, yearEnd: Int, yearStart: Int): [Article]
+  multipleArticles(author: String, by: String, direction: String, journal: String, project: String, skip: Int, tag: String, take: Int, yearEnd: Int, yearStart: Int): [Article]
   project(where: ProjectWhereUniqueInput!): Project
   projects(cursor: ProjectWhereUniqueInput, orderBy: [ProjectOrderByInput!], skip: Int, take: Int, where: ProjectWhereInput): [Project!]!
   projectsCount(cursor: ProjectWhereUniqueInput, orderBy: ProjectOrderByInput, skip: Int, take: Int, where: ProjectWhereInput): Int

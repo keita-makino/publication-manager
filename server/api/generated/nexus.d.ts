@@ -1739,6 +1739,8 @@ export interface NexusGenArgTypes {
     }
     multipleArticles: { // args
       author?: string | null; // String
+      by?: string | null; // String
+      direction?: string | null; // String
       journal?: string | null; // String
       project?: string | null; // String
       skip?: number | null; // Int

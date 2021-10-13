@@ -1,5 +1,5 @@
 import { gql, useQuery, useReactiveVar } from '@apollo/client';
-import { Button, Grid, Typography } from '@material-ui/core';
+import { Button, Grid, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 import { currentPageVar, filterVar } from '../localState';
 
@@ -18,7 +18,13 @@ export const PageSelect: React.FC<PageSelectProps> = (
   }, [filter]);
 
   return (
-    <Grid container justify={'flex-end'} alignItems={'baseline'} spacing={2}>
+    <Grid
+      item
+      container
+      justifyContent={'flex-end'}
+      alignItems={'center'}
+      spacing={2}
+    >
       <Grid item>
         <Button
           variant={'outlined'}

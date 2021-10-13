@@ -1,10 +1,11 @@
 import { useQuery, useReactiveVar } from '@apollo/client';
-import { Card, Grid, CircularProgress } from '@material-ui/core';
+import { Card, Grid, CircularProgress } from '@mui/material';
 import gql from 'graphql-tag';
 import React, { useEffect, useState } from 'react';
-import { currentPageVar, filterVar, loadingVar } from '../localState';
+import { currentPageVar, filterVar, loadingVar, sortVar } from '../localState';
 import { ArticleListItem } from './ArticleListItem';
 import { PageSelect } from './PageSelect';
+import { Sort } from './Sort';
 
 export type ArticleListProps = {};
 
@@ -18,6 +19,8 @@ const GET_ARTICLE_LIST = gql`
     $skip: Int
     $yearStart: Int
     $yearEnd: Int
+    $by: String
+    $direction: String
   ) {
     multipleArticles(
       author: $author
@@ -28,6 +31,8 @@ const GET_ARTICLE_LIST = gql`
       yearEnd: $yearEnd
       take: $take
       skip: $skip
+      by: $by
+      direction: $direction
     ) {
       id
       name
@@ -54,13 +59,14 @@ export const ArticleList: React.FC<ArticleListProps> = (
   props: ArticleListProps
 ) => {
   const filter = useReactiveVar(filterVar);
+  const sort = useReactiveVar(sortVar);
   const currentPage = useReactiveVar(currentPageVar);
   const pagination = {
     take: 21,
     skip: 20 * (currentPage - 1),
   };
   const { data, loading } = useQuery(GET_ARTICLE_LIST, {
-    variables: { ...filter, ...pagination },
+    variables: { ...filter, ...sort, ...pagination },
   });
   const isLoading = useReactiveVar(loadingVar);
 
@@ -74,8 +80,21 @@ export const ArticleList: React.FC<ArticleListProps> = (
 
   return (
     <Grid container spacing={2} direction={'column'}>
-      <Grid item xs={12}>
-        <PageSelect max={length} />
+      <Grid
+        item
+        container
+        xs={12}
+        justifyContent={'flex-end'}
+        alignContent={'center'}
+        alignItems={'center'}
+        spacing={2}
+      >
+        <Grid item>
+          <Sort />
+        </Grid>
+        <Grid item>
+          <PageSelect max={length} />
+        </Grid>
       </Grid>
       {data?.multipleArticles ? (
         length === 0 ? (
@@ -94,7 +113,13 @@ export const ArticleList: React.FC<ArticleListProps> = (
             padding: '0.5rem',
           }}
         >
-          <Grid container item xs={12} justify={'center'} alignItems={'center'}>
+          <Grid
+            container
+            item
+            xs={12}
+            justifyContent={'center'}
+            alignItems={'center'}
+          >
             <CircularProgress />
           </Grid>
         </Card>
