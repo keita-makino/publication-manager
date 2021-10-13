@@ -2,6 +2,9 @@
   "name": "server",
   "license": "MIT",
   "version": "0.1.0",
+  "engines": {
+    "node": "14.x"
+  },
   "dependencies": {
     "@prisma/client": "^2.27.0",
     "@ra-data-prisma/backend": "^7.0.0",
