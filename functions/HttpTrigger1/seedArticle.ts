@@ -13,7 +13,7 @@ import { createArticle } from "./mutation";
 
 export const seedArticle = async (articles: ArticleExternal[]) => {
   const client = createClient({
-    url: "http://localhost:4000/graphql",
+    url: "https://publication-manager.herokuapp.com/graphql",
     exchanges: defaultExchanges,
   });
 
