@@ -41,7 +41,7 @@
     "@babel/preset-typescript": "7.15.0",
     "@react-google-maps/api": "2.4.1",
     "@types/dotenv": "^8.2.0",
-    "@types/google.maps": "^3.45.6",
+    "@types/google.maps": "3.50.2",
     "@types/lodash": "^4.14.175",
     "@types/node": "^16.10.5",
     "@types/react": "17.0.29",
